@@ -1,0 +1,57 @@
+body {
+    background: #323232;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+ul,li{
+	list-style: none;
+}
+.tab-view{
+	margin-right: 50px;
+}
+.tab-view p {
+	font-size: 1.1rem;
+	color: #fff;
+}
+.tab {
+    width: 300px;
+}
+.tab .tab-nav{
+	height: 30px;
+	padding: 0;
+	margin: 0;
+}
+.tab .tab-nav li{
+	 float: left;
+	 margin-right: 5px;
+	 background: #767676;
+	 border-radius: 3px 3px 0 0;
+}
+.tab .tab-nav li.actived{
+	background: #fff;
+}
+.tab .tab-nav li.actived a{
+	color: #333;
+}
+.tab .tab-nav li a{
+	display: block;/* 防止点击非文字区域不能响应点击*/
+	height: 30px;
+	padding: 0 20px;
+	color: #fff;
+	text-decoration: none;
+	line-height: 30px;
+}
+.tab .content-wrap{
+	background: #fff;
+	padding: 5px;
+	height: 424px;
+}
+.tab .content-wrap .content-item{	
+	display: none;
+}
+.tab .content-wrap .current{
+	display: block;
+}
