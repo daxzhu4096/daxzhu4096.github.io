@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tab组件演示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.bootcss.com/normalize/6.0.0/normalize.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -12,37 +13,105 @@
 </head>
 
 <body>
-    <div class="js-tab tab" data-config='{
-		"triggerType": "click",
+    <div class="tab-view">
+        <p>默认第二个标签，无渐入渐出</p>
+        <div class="js-tab tab" data-config='{
+		"triggerType": "mouseover",
 		"effect": "",
 		"invoke": 2,
-		"auto": 5000
+		"auto": ""
 		}'>
-        <ul class="tab-nav">
-            <li class="actived"><a href="JavaScript:">新闻</a></li>
-            <li><a href="JavaScript:">娱乐</a></li>
-            <li><a href="JavaScript:">体育</a></li>
-            <li><a href="JavaScript:">竞技</a></li>
-        </ul>
-        <div class="content-wrap">
-            <div class="content-item current">
-                <img src="1.jpg" alt="" width="290" height="424">
-            </div>
-            <div class="content-item">
-                <img src="2.jpg" alt="" width="290" height="424">
-            </div>
-            <div class="content-item">
-                <img src="3.jpg" alt="" width="290" height="424">
-            </div>
-            <div class="content-item">
-                <img src="4.jpg" alt="" width="290" height="424">
+            <ul class="tab-nav">
+                <li class="actived"><a href="JavaScript:">新闻</a></li>
+                <li><a href="JavaScript:">娱乐</a></li>
+                <li><a href="JavaScript:">体育</a></li>
+                <li><a href="JavaScript:">竞技</a></li>
+            </ul>
+            <div class="content-wrap">
+                <div class="content-item current">
+                    <img src="1.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="2.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="3.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="4.jpg" alt="" width="290" height="424">
+                </div>
             </div>
         </div>
     </div>
+    
+    <div class="tab-view">
+        <p>渐入渐出，自动切换</p>
+        <div class="js-tab tab" data-config='{
+		"triggerType": "mouseover",
+		"effect": "fade",
+		"invoke": 1,
+		"auto": 3000
+		}'>
+            <ul class="tab-nav">
+                <li class="actived"><a href="JavaScript:">新闻</a></li>
+                <li><a href="JavaScript:">娱乐</a></li>
+                <li><a href="JavaScript:">体育</a></li>
+                <li><a href="JavaScript:">竞技</a></li>
+            </ul>
+            <div class="content-wrap">
+                <div class="content-item current">
+                    <img src="1.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="2.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="3.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="4.jpg" alt="" width="290" height="424">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-view">
+        <p>渐入渐出、点击切换、默认第二个标签</p>
+        <div class="js-tab tab" data-config='{
+		"triggerType": "click",
+		"effect": "fade",
+		"invoke": 2,
+		"auto": ""
+		}'>
+            <ul class="tab-nav">
+                <li class="actived"><a href="JavaScript:">新闻</a></li>
+                <li><a href="JavaScript:">娱乐</a></li>
+                <li><a href="JavaScript:">体育</a></li>
+                <li><a href="JavaScript:">竞技</a></li>
+            </ul>
+            <div class="content-wrap">
+                <div class="content-item current">
+                    <img src="1.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="2.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="3.jpg" alt="" width="290" height="424">
+                </div>
+                <div class="content-item">
+                    <img src="4.jpg" alt="" width="290" height="424">
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="tab.js"></script>
     <script>
-    window.onload =function() {
-        var tab = new Tab(document.querySelector(".js-tab"));
+    window.onload = function() {
+        let js_tab = document.querySelectorAll('.tab-view .js-tab')
+        for (let i = 0; i < js_tab.length; i++) {
+            new Tab(js_tab[i])
+        }
     };
     </script>
 </body>
