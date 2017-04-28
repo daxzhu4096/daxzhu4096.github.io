@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="">
+    <title>Flex初步</title>
+    <style>
+        * {
+            padding: 20px;
+            margin: 0px;
+        }
+        
+        .flex,
+        .flex>div {
+            box-sizing: border-box;
+        }
+        
+        .flex {
+            border: 1px solid gray;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: none;
+        }
+        
+        .flex>div {
+            width: 150px;
+            border: 1px solid #f00;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+        
+        .flex_item1 {
+            height: 120px;
+        }
+        
+        .flex_item2 {
+            height: 100px;
+        }
+        
+        .flex_item3 {
+            height: 40px;
+        }
+        
+        .flex_item4 {
+            height: 200px;
+            border: 1px solid blue!important;
+        }
+        
+        @media all and (max-width: 640px) {
+            .flex_item4 {
+                order: -1;
+            }
+            .flex {
+                flex-wrap: wrap;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div class="flex_item1"></div>
+        <div class="flex_item2"></div>
+        <div class="flex_item3"></div>
+        <div class="flex_item4"></div>
+    </div>
+</body>
+
+</html>
