@@ -1,0 +1,118 @@
+/*导航栏高度：60px、下外边距20px，背景＃333；	外边距20px、	内边距20、外侧颜色＃dedede、	
+表格19 border1，边框　E6e6e6  表格第一列 535-42 1030-536 1238-1031
+
+*/
+*{border:0;margin: 0;}
+body{
+	background: #dedede;
+	font-family: "微软雅黑";
+	font-size: 17px;
+	line-height: 1.75em;
+}
+header{
+	height: 60px;
+	background: #333 url(logo.gif) no-repeat left;
+	width: 100%;
+}
+.clear{
+	clear: both;
+}
+header nav ul{
+/*	list-style: none;*/
+	margin:0;
+	padding: 0;
+
+	display: flex;
+}
+header nav ul li{
+	padding-right: 2rem;
+
+}
+header nav a {
+    display: block;
+    padding: 0 1em 0 0;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    line-height: 50px;
+    border-left: 0;
+}
+header nav a:hover{
+	color: #555;
+}
+nav{
+	float: right;
+	padding-right: 2rem;
+}
+article{
+	width: 90%;
+	margin: 20px auto;
+	padding: 20px;
+
+}
+section,aside {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 0px #ADA6A6;
+    border: 1px solid #C3C0C0;
+}
+section h1,h2{
+	font-size: 1em;
+	margin-bottom: 15px;
+}
+.pic {
+    max-width: 480px;
+    max-height: 300px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 1px #B78888;
+    margin: 15px 0;
+}
+section p{
+	text-indent: 2em;
+}
+
+.pic-box{
+	display: flex;
+	flex-direction: column;
+}
+#table{
+	border: 1px solid #ddd;
+	margin: 25px auto;
+	padding: 15px;
+	width: 95%;
+	text-align: left;
+	border-collapse: collapse;
+}
+#table td,th{
+	border:1px solid #ccc;
+	padding: 4px;
+}
+.input tr,td{
+	border: 0;
+}
+#input td{
+	text-align: left;
+	padding-left: 15px;
+}
+#input tr>td:first-child{
+	text-align: right;
+	width: 30%;
+}
+#input{
+	font-size: 0.75em;
+	width: 80%;
+}
+input,textarea,select{
+	border: 1px solid #ddd;
+}
+#submit{
+	display: block;
+    margin: 0 auto;
+    background: #3355d0;
+    width: 95%;
+    height: 2em;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 14px;
+}
