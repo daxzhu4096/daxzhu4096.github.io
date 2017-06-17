@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue todos</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        body {
+            background: #6bcb9c;
+            background-size: cover;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1 {
+            color: #fff;
+            font-family: sans-serif;
+            margin-top: 6%;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+        }
+
+        #app {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 740px;
+            background: #fff;
+            border-radius:15px;
+            box-shadow: 4px 4px 20px #21583d;
+            overflow: auto;
+            padding: 4rem;
+            font-size: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        #app .add-todo-input{
+            font-size: 1.3rem;
+            height: 3rem;
+            width: 90%;
+            margin: auto;
+            border-radius: 15px;
+            border: 1px #ccc solid;
+            padding-left: 2rem;
+            display: block;
+        }
+        #app .add-todo-input:focus,button:focus {
+            outline: none;
+        }
+        #app ul{
+            margin: 2rem;
+            color: #19e07f;
+        }
+        #app ul li {
+            /*border-bottom: #6bcb9c solid 1px;*/
+            position: relative;
+        }
+        #app ul li div i{
+            position: absolute;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background: url(https://ooo.0o0.ooo/2017/06/17/5944f0717ad1d.png) no-repeat center center;
+            background-size: cover;
+            top: 50%;
+            margin-top: -10px;
+        }
+        #app ul li div label{
+            display: block;
+            line-height: 3rem;
+            overflow-wrap: break-word;
+        }
+        #app ul li.isFinished div i{
+            background: url(https://ooo.0o0.ooo/2017/06/17/5944ee769a443.png) no-repeat center center;
+            background-size: cover;
+        }
+        #app ul li.isFinished div label{
+            color: rgba(107, 203, 156, 0.39);
+            text-decoration: line-through;
+        }
+        #app ul li div{
+            padding:0 4rem;
+        }
+        #app ul li div button{
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            right: 2rem;
+            height: 14px;
+            width: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: url(https://ooo.0o0.ooo/2017/06/17/5944ec4ae0855.png) no-repeat center center;
+            background-size: cover;
+            border: none;
+        }
+        #app ul li div:hover button{
+            display: block;
+        }
+        /*#app ul li div .un-fouce{
+            display: none;
+        }*/
+        #app .control{
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            bottom: 2rem;
+            left: 6rem;
+            right: 6rem;
+        }
+        #app .control .btn{
+            line-height: 2rem;
+            border: 1px solid #6bcb9c;
+            height: 2rem;
+            border-radius: 1.5rem;
+            padding: 0 1.5rem;
+            color: #6bcb9c;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        #app .control .active{
+            color: #fff;
+            background: #3db57a;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>todos</h1>
+    <div id="app">
+        <input type="text" class="add-todo-input" placeholder="What needs to be done?" v-model="newTodo" @keyup.enter="addNewTodo">
+        <ul>
+            <li v-for="(todo,index) in filteredTodos" :class="{isFinished:todo.isFinished}">
+                <div class="item">
+                    <i class="btn" @click="toggleFinish(todo)"></i>
+                    <label>{{todo.label}}</label>
+                    <button @click="removeTodo(index)"></button>
+                </div>
+            </li>
+        </ul>
+        <div v-show="this.todos.length" class="control">
+            <div class="btn" :class="{active:hashname == 'all'}"><a href="#/all">&nbsp;&nbsp;All&nbsp;&nbsp;</a></div>
+            <div class="btn" :class="{active:hashname == 'complete'}"><a href="#/complete">Complete</a></div>
+            <div class="btn" :class="{active:hashname == 'incomplete'}"><a href="#/incomplete">Incomplete</a></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
+    <script>
+        var STORAGE_KEY = 'todos';
+        var store = {
+            fetch() {
+                return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
+            },
+            save(todos) {
+                window.localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+            }
+        };
+        var filters = {
+            all(todos){
+                return todos
+            },
+            complete(todos){
+                return todos.filter((todo)=>{
+                    return todo.isFinished
+                })
+            },
+            incomplete(todos){
+                return todos.filter((todo)=>{
+                    return !todo.isFinished
+                })
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                todos: store.fetch(),
+                newTodo: '',
+                hashname: 'all'
+            },
+            computed:{
+                filteredTodos(){
+                    return filters[this.hashname](this.todos)
+                }
+            },
+            methods: {
+                addNewTodo() {
+                    if (this.newTodo === '') {
+                        return
+                    }
+                    this.todos.unshift({
+                        label: this.newTodo,
+                        isFinished: false
+                    })
+                    this.newTodo = ''
+                },
+                toggleFinish(todo){
+                    todo.isFinished = !todo.isFinished
+                },
+                removeTodo(index){
+                    this.todos.splice(index,1)
+                }
+            },
+            watch:{
+                todos: {
+                    handler(val,oldVal){
+                        store.save(val)
+                    }
+                }
+            }
+        });
+        function onHashChange(){
+            var hashname = window.location.hash.replace(/#\/?/,'');
+            if(filters[hashname]){
+                app.hashname = hashname
+            }else{
+                window.location.hash = ''
+                app.hashname = 'all'
+            }
+        }
+        window.addEventListener('hashchange',onHashChange)
+        onHashChange()
+    </script>
+</body>
+
+</html>
