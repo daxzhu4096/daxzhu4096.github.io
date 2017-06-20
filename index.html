@@ -1,29 +1,383 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 
 <head>
-    <title>11111</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Richard Ju</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://cdn.bootcss.com/fullPage.js/2.9.4/jquery.fullpage.min.css" rel="stylesheet">
+    <style>
+        /*
+        reset
+        */
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        section {
+            height: 100vh;
+        }
+        /*
+        page1
+        */
+
+        .page1 {
+            background: url(https://ooo.0o0.ooo/2017/06/20/59493401bfbdf.jpg) repeat-y;
+            background-size: contain;
+        }
+
+        .page1 .wrap {
+            height: 100%;
+            background: url(https://ooo.0o0.ooo/2017/06/20/594933f2da953.jpg) no-repeat center bottom;
+            background-size: contain;
+            padding-top: 8%;
+        }
+
+        .page1 .wrap h1,
+        p {
+            font-weight: normal;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page1 .wrap h1 {
+            font-size: 3.2rem;
+        }
+
+        .page1 .wrap h1 b {
+            font-weight: normal;
+            color: #f00;
+        }
+
+        .page1 .wrap p {
+            font-size: 2rem;
+        }
+        /*
+        page2
+        */
+
+        .works>div {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .works h2 {
+            font-weight: normal;
+            font-size: 2rem;
+            background: url(https://ooo.0o0.ooo/2017/06/20/59493411d40ec.png) no-repeat;
+            height: 100px;
+            line-height: 100px;
+            padding-left: 50px;
+            background-size: contain;
+            font-size: 3rem;
+        }
+
+        .works h2 b {
+            color: #f00;
+            font-weight: 800;
+        }
+
+        .works .demos .demos-top,
+        .demos-bottom {
+            display: flex;
+        }
+
+        .works .demos .imageWrapper {
+            padding: 10px;
+            margin: 20px;
+            box-shadow: 3px 3px 10px #bbb;
+            position: relative;
+        }
+        /*宽度是多少的时候增加一个头像*/
+
+        .skills>div {
+            position: relative;
+            background: #f8f8f8;
+        }
+
+        .skills h2 {
+            font-weight: normal;
+            background: url(https://ooo.0o0.ooo/2017/06/20/5949337cbdcd6.jpg) no-repeat;
+            height: 100px;
+            line-height: 100px;
+            padding-left: 50px;
+            background-size: contain;
+            font-size: 3rem;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            margin-top: 5%;
+        }
+
+        .skills h2 b {
+            color: #f00;
+            font-weight: 600;
+        }
+
+        .skills nav li {
+            font-size: 1.8rem;
+            padding: 1.5rem;
+        }
+
+        .skills nav {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /*.skills nav ol.skill {
+            margin-right: 3rem;
+        }*/
+
+        .border-1 {
+            border: 1px solid #f1f1f1;
+        }
+
+        .contacts>div {
+            position: relative;
+        }
+
+        .contacts h2 {
+            font-weight: normal;
+            background: url(https://ooo.0o0.ooo/2017/06/20/5949337f01f53.jpg) no-repeat;
+            height: 100px;
+            line-height: 100px;
+            padding-left: 50px;
+            background-size: contain;
+            font-size: 3rem;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            margin-top: 5%;
+        }
+
+        .contacts h2 b {
+            color: #f00;
+            font-weight: 600;
+        }
+
+        .contacts dl dt i {
+            display: block;
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .contacts dl dt i.mail {
+            background: url(https://ooo.0o0.ooo/2017/06/19/59477aff9fb85.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .contacts dl dt i.phone {
+            background: url(https://ooo.0o0.ooo/2017/06/19/59477b07c739f.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .contacts dl dt i.wechat {
+            background: url(https://ooo.0o0.ooo/2017/06/19/59477b0a0905f.png) no-repeat center center;
+            background-size: contain;
+        }
+
+        .contacts dl {
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20rem;
+            flex-wrap: wrap;
+            font-size: 2rem;
+        }
+
+        .contacts dl dt {
+            width: 5rem;
+            position: relative;
+        }
+
+        .contacts dl dd {
+            width: 15rem;
+            padding: 2rem 1rem;
+        }
+
+        .works .demos .imageWrapper .mask {
+            display: flex;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(16, 16, 16, .65);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .works .demos .imageWrapper .mask h3 {
+            margin: auto 0;
+            font-weight: 100;
+            font-size: 2rem;
+            color: #fafafa;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#fullpage').fullpage({
+                anchors: ['关于我', '作品展示', '技能', '联系我']
+            });
+        })
+    </script>
 </head>
 
 <body>
-    <div>
-        <a href="imitation/baiduIFE/task1-2/task1~2.html">1</a>
-        <a href="imitation/baiduIFE/task3.html">1</a>
-        <a href="imitation/baiduIFE/task4.html">1</a>
-        <a href="imitation/baiduIFE/task6.html">1</a>
-        <a href="imitation/baiduIFE/task7.html">1</a>
-        <a href="imitation/baiduIFE/task8.html">1</a>
-        <a href="imitation/baiduIFE/task.html">1</a>
-        <a href="imitation/baiduIFE/task.html">1</a>
-        <a href="imitation/baiduIFE/task.html">1</a>
-        <a href="imitation/baiduIFE/task.html">1</a>
-        imitation/baiduIFE
+    <div id="fullpage">
+        <section class="section page1">
+            <div class="wrap">
+                <h1>Hi, 我的名字叫 <b>朱耿朋</b></h1>
+                <p>是一名 前端工程师</p>
+                <p>2016年，毕业于湘潭大学</p>
+            </div>
+        </section>
+        <section class="section works">
+            <h2>我的 <b>作品</b></h2>
+
+            <div class="demos" id="demos">
+                <div class="demos-top">
+                    <div class="imageWrapper">
+                        <a href="https://dxzhu.github.io/imitate-huaban/index.html">
+                            <img src="https://ooo.0o0.ooo/2017/06/20/594932c43f347.png" alt="" width="320">
+                            <div class="mask">
+                                <h3>防花瓣网首页</h3>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="imageWrapper">
+                        <a href="https://dxzhu.github.io/NewWorld/index.html">
+                            <img src="https://ooo.0o0.ooo/2017/06/20/5949330ea69b7.png" alt="" width="320">
+                            <div class="mask">
+                                <h3>常见产品技术官网</h3>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <div class="imageWrapper">
+                        <a href="https://dxzhu.github.io/MobileWeb/index.html">
+                            <img src="https://ooo.0o0.ooo/2017/06/20/594933430d91f.png" alt="" width="320">
+                            <div class="mask">
+                                <h3>移动端网站布局</h3>
+                            </div>    
+                        </a>
+                        
+                    </div>
+                </div>
+                <div class="demos-bottom">
+                    <div class="imageWrapper">
+                        <a href="https://dxzhu.github.io/vue/todolist.html">
+                            <img src="https://ooo.0o0.ooo/2017/06/20/594933508dfdd.gif" alt="" width="320">
+                            <div class="mask">
+                                <h3>Vue todo list</h3>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <div class="imageWrapper">
+                        <a href="https://dxzhu.github.io/ife/yaoyaoxueyuan/5.html">
+                            <img src="https://ooo.0o0.ooo/2017/06/20/5949338cb3f61.gif" alt="" width="320" class="border-1">
+                            <div class="mask">
+                                <h3>听指令的小方块</h3>
+                            </div>    
+                        </a>
+                        
+                    </div>
+                    <div class="imageWrapper">
+                        <a href="https://dxzhu.github.io/CSS3-3D/index.html">
+                            <img src="https://ooo.0o0.ooo/2017/06/20/59493377c5717.gif" alt="" width="320" class="border-1">
+                            <div class="mask">
+                                <h3>CSS 3 动画</h3>
+                            </div>    
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section skills">
+            <h2>我的 <b>SKILLS</b></h2>
+            <nav>
+                <ol class="skill">
+                    <li>
+                        静态网页
+                    </li>
+                    <li>
+                        动态网页
+                    </li>
+                    <li>
+                        移动端页面
+                    </li>
+                    <li>
+                        前端框架
+                    </li>
+                </ol>
+                <ol>
+                    <li>
+                        100%还原设计稿，像素级页面制作能力
+                    </li>
+                    <li>
+                        熟悉 HTTP、AJAX、JSONP 等技术，了解前后端分离开发模式
+                    </li>
+                    <li>
+                        熟悉 CSS 3、响应式页面等
+                    </li>
+                    <li>
+                        了解 Vue.js、React.js 基本原理，能使用前端框架开发单页面应用
+                    </li>
+                </ol>
+            </nav>
+        </section>
+        <section class="section contacts">
+
+            <h2>联系 <b>我</b></h2>
+            <dl>
+                <dt><i class="mail"></i></dt>
+                <dd><a href="mailto:daxzhu@126.com">daxzhu@126.com</a></dd>
+                <dt><i class="phone"></i></dt>
+                <dd>18670967023</dd>
+                <dt><i class="wechat"></i></dt>
+                <dd><img src="https://ooo.0o0.ooo/2017/06/20/594940d3bb270.png" alt="" width="128"></dd>
+            </dl>
+        </section>
     </div>
-    <h1>hello world</h1>
-    <a href="component/tab/index.html">tab</a>
+    <script>
+        $('#demos').find('.mask').hide();
+        $('#demos').find('.imageWrapper').mousemove(function () {
+            $(this).find('.mask').css('display', 'flex');
+            // $(this).find('.mask').css('display','none');            
+        }).mouseout(function () {
+            $(this).find('.mask').css('display', 'none');
+        })
+    </script>
 </body>
 
 </html>
