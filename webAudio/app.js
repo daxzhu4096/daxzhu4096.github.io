@@ -120,6 +120,11 @@ class FmApp {
     this.audio.play()
     this.Map.$pause.style.display = 'inline-block'
     this.Map.$play.style.display = 'none'
+    setTimeout(function(){
+      if(this.audio.readyState ===0){
+        this.loadData()
+      }
+    }.bind(this),3000)
   }
   pause() {
     this.audio.pause()
