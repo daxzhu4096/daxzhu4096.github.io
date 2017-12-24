@@ -1,7 +1,7 @@
 # 仿豆瓣音乐播放器
 题目地址：http://ife.baidu.com/course/detail/id/83
 
-预览：https://daxzhu4096.github.io/webAudio/index.html
+预览：https://daxzhu4096.github.io/webAudio/
 
 # 任务目的
 * 练习综合运用HTML、CSS、JavaScript实现功能
