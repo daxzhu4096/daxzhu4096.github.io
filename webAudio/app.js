@@ -58,7 +58,7 @@ class FmApp {
   }
   loadState() {
     var that = this
-    fetch('http://api.jirengu.com/fm/getSong.php?channel=public_tuijian_rege').then(response => response.json()).then(function (data) {
+    fetch('https://jirenguapi.applinzi.com/fm/getSong.php?channel=public_tuijian_rege').then(response => response.json()).then(function (data) {
       that.currentData = data.song[0]
       that.setState(data.song[0])
       that.play()
