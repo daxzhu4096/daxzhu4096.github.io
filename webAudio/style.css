@@ -1,0 +1,170 @@
+.fm-app>div,
+.fm-app>a,
+.fm-app>canvas {
+    position: absolute;
+    /* border: 1px solid #999; */
+}
+
+.icon {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.fm-app .fm-player {
+    width: 430px;
+    height: 180px;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -215px;
+}
+
+.fm-app .fm-player .fm-title {
+    font-size: 25px;
+    color: rgb(3, 3, 3);
+    height: 33px;
+}
+
+.fm-app .fm-player .fm-artist {
+    font-size: 15px;
+    color: rgb(74, 74, 74);
+    line-height: 2;
+    height: 30px;
+}
+
+.fm-app .fm-player .fm-operations {
+    margin-top: 5px;
+}
+
+.fm-app .fm-player .fm-operations .fm-time {
+    font-size: 11px;
+    color: rgb(155, 155, 155);
+    margin-right: 15px;
+}
+
+.fm-app .fm-player .fm-operations .fm-volume {
+    cursor: pointer;
+}
+
+.fm-app .fm-player .fm-operations .fm-volume:hover .fm-volume-slider {
+    display: inline-block;
+}
+
+.fm-app .fm-player .fm-operations .fm-volume .fm-volume-slider {
+    display: none;
+    vertical-align: middle;
+    width: 50px;
+    height: 2px;
+    background-color: rgb(229, 229, 232);
+    cursor: pointer;
+}
+
+.fm-app .fm-player .fm-operations .fm-volume .fm-volume-slider .fm-volume-value {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(151, 151, 151);
+}
+
+.fm-app .fm-player .fm-operations .fm-buttons {
+    float: right;
+}
+
+.fm-app .fm-player .fm-progress {
+    padding: 5px 0;
+}
+
+.fm-app .fm-player .fm-progress .fm-progress-slider {
+    height: 1px;
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+.fm-app .fm-player .fm-progress .fm-progress-slider .fm-progress-value {
+    height: 100%;
+    background-color: rgb(107, 189, 122);
+}
+
+.fm-app .fm-player .fm-controls {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.fm-app .fm-player .fm-controls .icon:first-child {
+    margin-left: 0;
+}
+
+.fm-app .fm-player .fm-controls .icon:last-child {
+    margin-right: 0;
+}
+
+.fm-app .fm-player .fm-controls .icon {
+    margin: 0 15px;
+}
+
+.fm-app .fm-player .fm-controls .right {
+    float: right;
+}
+
+.fm-app .fm-cover {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -120px;
+    margin-left: 255px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.fm-app .fm-cover img {
+    width: 100%;
+}
+
+.fm-app .songlist {
+    width: 240px;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -260px;
+    margin-left: -495px;
+    overflow: auto;
+    font-size: 13px;
+    color: #7c7b82;
+}
+
+.fm-app .songlist .fm-songlist-item{
+  margin-bottom: 12px;
+  cursor: pointer;
+  height: 17px;
+  overflow: hidden;
+}
+.fm-app .songlist::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+.fm-app .songlist:hover::-webkit-scrollbar-thumb {
+  background: hsla(0,0%,77%,.3);
+  border-radius: 11px;
+}
+
+.fm-app .songlist-item {
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.fm-app .songlist-item:last-child {
+  margin-bottom: 0;
+}
+
+.fm-app .songlist-item:hover {
+  color: #4a4a4a;
+}
+
+.fm-app .songlist-item.active {
+  color: #000;
+}
