@@ -1,0 +1,43 @@
+.app .selector-container{
+  box-sizing: border-box;
+  width: 130px;
+  height: 26px;
+  border: 1px solid #c1bcbc;
+}
+.app .selector-container p{
+  padding: 0;
+  margin: 0;
+  padding-left: 10px;
+  height: 100%;
+  line-height: 26px;
+  cursor: pointer;
+}
+.selector-container p:after {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: block;
+  margin-top: -2px;
+  content: "";
+  width: 0;
+  border: 4px solid transparent;
+  border-top: 4px solid #000;
+}
+.app .selector-container ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: -1px;
+  width: 130px;
+}
+.app .selector-container ul li{
+  height: 26px;
+  border: 1px solid #c1bcbc;
+  line-height: 26px;
+  border-top: none;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.app .selector-container ul li.active{
+  background: #999;
+}
