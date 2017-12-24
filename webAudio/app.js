@@ -36,7 +36,7 @@ class FmApp {
     this.audio.addEventListener('timeupdate', this.updateProgress.bind(this), false)
     document.body.appendChild(this.audio)
     this.createSongList()
-    this.loadState()
+    this.loadData()
   }
   createSongList() {
     this.Map.$songlist.innerHTML = this.data.map((item, index) => {
@@ -56,24 +56,28 @@ class FmApp {
     this.next()
     console.log(this.index)
   }
-  loadState() {
+  loadData() {
     var that = this
     fetch('https://jirenguapi.applinzi.com/fm/getSong.php?channel=public_tuijian_rege').then(response => response.json()).then(function (data) {
       that.currentData = data.song[0]
-      that.setState(data.song[0])
+      that.setData(data.song[0])
       that.play()
     }).catch(e => {
       console.log(e)
-      that.loadState()
+      that.loadData()
     })
   }
-  setState(data) {
-    this.Map.$title.textContent = data.title
-    this.Map.$artist.textContent = data.artist
-    this.Map.$cover.src = data.picture
-    this.audio.src = data.url
-    document.title = data.title
-    console.log(data)
+  setData(data) {
+    if(data.url){
+      this.Map.$title.textContent = data.title
+      this.Map.$artist.textContent = data.artist
+      this.Map.$cover.src = data.picture
+      this.audio.src = data.url
+      document.title = data.title
+      console.log(data)
+    }else{
+      this.loadData()
+    }
   }
   star() {
     let length = this.data.length, flag = false, i;
@@ -124,7 +128,7 @@ class FmApp {
   }
   next() {
     if(this.musicFrom){
-      this.setState(this.data[this.index])
+      this.setData(this.data[this.index])
       this.currentData = this.data[this.index]
       this.play()
       if(this.index === this.data.length-1){
@@ -133,7 +137,7 @@ class FmApp {
         this.index++
       }      
     }else{
-      this.loadState()
+      this.loadData()
     }    
   }
 }
