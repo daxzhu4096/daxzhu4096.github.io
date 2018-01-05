@@ -425,7 +425,7 @@ p[data-v-3c187c50] {
 
 .container .list[data-v-422908fc] {
     max-height: 408px;
-    overflow: scroll
+    overflow: auto
 }
 
 header .header-btn-wrap span[data-v-422908fc] {
